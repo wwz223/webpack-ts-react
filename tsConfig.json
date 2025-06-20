@@ -1,25 +1,21 @@
 {
   "compilerOptions": {
-    "target": "esnext", // Specifies the ECMAScript target version for generated JavaScript.
-    "lib": ["dom", "dom.iterable", "esnext"], // Specifies a list of bundled library declaration files to be included in the compilation.
-    "allowJs": true, // Allow JavaScript files to be compiled.
-    "skipLibCheck": true, // Skip type checking of all declaration files (*.d.ts).
-    "esModuleInterop": true, // Enables a workaround for namespace imports to be compatible with CommonJS modules.
-    "allowSyntheticDefaultImports": true, // Allows default imports from modules with no default export.
-    "strict": true, // Enables a broad range of type checking strictness options.
-    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file.
-    "noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statements.
-    "module": "esnext", // Specifies the module code generation.
-    "moduleResolution": "node", // Specifies how modules are resolved.
-    "resolveJsonModule": true, // Enables importing .json files.
-    "isolatedModules": true, // Ensures that each file can be safely transpiled without relying on other files.
-    "noEmit": true, // Do not emit outputs (only perform type checking).
-    "jsx": "react-jsx" // Specifies the JSX factory function to use.
+    "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "outDir": "./dist",
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
-  "include": [
-    "src" // Specifies an array of glob patterns to include in the program.
-  ],
-  "exclude": [
-    "node_modules" // Specifies an array of glob patterns to exclude from the program.
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
