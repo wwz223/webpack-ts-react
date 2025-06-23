@@ -1,3 +1,10 @@
+/**
+ * 生产环境配置
+ * mini-css-extract-plugin: 将 CSS 提取为单独的文件
+ * css-loader: 将 CSS 转换为 JavaScript 模块
+ * style-loader: 将 CSS 转换为 JavaScript 模块
+ */
+
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {

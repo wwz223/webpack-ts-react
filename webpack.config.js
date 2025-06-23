@@ -1,13 +1,15 @@
 /**
  * webpack-merge: 用于合并配置
  * yargs-parser: 用于解析命令行参数
+ * clean-webpack-plugin: 用于清理输出目录
+ * html-webpack-plugin: 用于生成 HTML 文件
  */
 
 const merge = require("webpack-merge");
 const argv = require("yargs-parser")(process.argv.slice(2));
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const { resolve, join } = require("path");
+const { resolve } = require("path");
 
 const _mode = argv.mode || "development";
 
@@ -54,13 +56,6 @@ const WebpackBaseConfig = {
       hash: true,
     }),
   ],
-  devServer: {
-    static: {
-      directory: join(__dirname, "public"),
-    },
-    compress: true,
-    port: 9000,
-  },
 };
 
 module.exports = merge.default(WebpackBaseConfig, _modeConfig);

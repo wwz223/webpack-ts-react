@@ -16,6 +16,7 @@
 - [ ] Git Hooks (husky)
 
 ### 构建优化 🚀
+- ✅ 分析打包文件
 - ✅ CSS 压缩 mini-css-extract-plugin
 - [ ] 代码分割 (Code Splitting)
 - [ ] 懒加载支持
