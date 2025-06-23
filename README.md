@@ -7,15 +7,16 @@
 
 ### 基础配置 ⚙️
 - ✅ 项目初始化
-- [ ] Webpack 基础配置
+- ✅ Webpack 基础配置
   - [ ] 开发环境配置
   - [ ] 生产环境配置
-  - [ ] 热更新支持
-- [ ] TypeScript 配置
+  - ✅ 热更新支持
+- ✅ TypeScript 配置
 - [ ] ESLint & Prettier 配置
 - [ ] Git Hooks (husky)
 
 ### 构建优化 🚀
+- ✅ CSS 压缩 mini-css-extract-plugin
 - [ ] 代码分割 (Code Splitting)
 - [ ] 懒加载支持
 - [ ] 打包性能优化
@@ -31,7 +32,7 @@
 - [ ] 错误边界处理
 
 ### 样式相关 🎨
-- [ ] CSS 模块化
+- ✅ CSS 模块化
 - [ ] Sass/Less 支持
 - [ ] PostCSS 配置
 - [ ] CSS 提取和压缩

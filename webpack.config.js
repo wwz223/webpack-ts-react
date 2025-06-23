@@ -7,7 +7,8 @@ const merge = require("webpack-merge");
 const argv = require("yargs-parser")(process.argv.slice(2));
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const { resolve } = require("path");
+const { resolve, join } = require("path");
+
 const _mode = argv.mode || "development";
 
 const _modeConfig = require(`./config/webpack.${_mode}.js`);
@@ -15,39 +16,32 @@ const _modeConfig = require(`./config/webpack.${_mode}.js`);
 const WebpackBaseConfig = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    alias: {
+      "@": resolve(__dirname, "src"),
+    },
   },
   entry: {
     main: resolve("src/index.tsx"),
   },
   output: {
     path: resolve(process.cwd(), "dist"),
-    filename: "[name].[contenthash:8].js",
+    filename: "index.js",
     chunkFilename: "[name].[contenthash:8].js",
   },
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: "style-loader",
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: {
-                auto: true,
-                localIdentName: "[local]--[hash:base64:5]",
-              },
-            },
-          },
-        ],
-      },
-      {
         test: /\.(ts|tsx)$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         use: {
-          loader: "swc-loader",
+          loader: "babel-loader",
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+            ],
+          },
         },
       },
     ],
@@ -55,11 +49,18 @@ const WebpackBaseConfig = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename: "index.html",
       template: resolve("src/index.html"),
-      inject: "body", // 或者改为 "head"
+      inject: true,
+      hash: true,
     }),
   ],
+  devServer: {
+    static: {
+      directory: join(__dirname, "public"),
+    },
+    compress: true,
+    port: 9000,
+  },
 };
 
 module.exports = merge.default(WebpackBaseConfig, _modeConfig);
