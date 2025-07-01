@@ -6,14 +6,21 @@
  */
 
 const { join } = require("path");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin =
+//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
   module: {
     rules: [
+      // 普通 CSS 文件（全局样式、第三方库等）
       {
         test: /\.css$/i,
+        exclude: /\.module\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      // CSS Modules 文件
+      {
+        test: /\.module\.css$/i,
         use: [
           "style-loader",
           {
@@ -28,7 +35,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [new BundleAnalyzerPlugin()],
+  //   plugins: [new BundleAnalyzerPlugin()],
   devServer: {
     static: {
       directory: join(__dirname, "public"),

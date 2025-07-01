@@ -1,9 +1,11 @@
 import React from "react";
-import styles from "./button.css";
+import "./button.css";
 
-export const Button = () => {
-  console.log("styles object:", styles);
-  console.log("styles keys:", Object.keys(styles));
-  console.log("btn class:", styles.btn);
-  return <div className={styles.btn}>Click me</div>;
+interface ButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+export const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
+  return <div className="btn">{children}</div>;
 };

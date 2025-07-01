@@ -7,7 +7,7 @@ const container = document.getElementById("app") as HTMLElement;
 if (container) {
   const root = createRoot(container);
 
-  root.render(<Button />);
+  root.render(<Button>按钮</Button>);
 } else {
   console.log("with out app element");
 }
