@@ -20,6 +20,7 @@ const WebpackBaseConfig = {
     extensions: [".tsx", ".ts", ".js"],
     alias: {
       "@": resolve(__dirname, "src"),
+      "config": resolve(__dirname, "config")
     },
   },
   entry: {
@@ -29,6 +30,7 @@ const WebpackBaseConfig = {
     path: resolve(process.cwd(), "dist"),
     filename: "index.js",
     chunkFilename: "[name].[contenthash:8].js",
+    publicPath: "/",
   },
   module: {
     rules: [

@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "client:dev": "webpack --mode development",
-    "client:server": "webpack-dev-server --mode development",
-    "client:build": "webpack --mode production",
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "analyz": "webpack --profile --json > stats.json"
   },
@@ -37,6 +36,8 @@
   },
   "dependencies": {
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-router": "^7.6.3",
+    "react-router-dom": "^7.6.3"
   }
 }

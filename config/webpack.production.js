@@ -22,7 +22,7 @@ module.exports = {
               modules: {
                 localIdentName: "[local]--[hash:base64:5]",
                 auto: true,
-                exportLocalsConvention: "camelCase"
+                exportLocalsConvention: "camelCase",
               },
             },
           },

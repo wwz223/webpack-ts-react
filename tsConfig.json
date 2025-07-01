@@ -17,9 +17,10 @@
     "typeRoots": ["./node_modules/@types", "./src/types"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/config/*": ["./config/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "config/**/*"],
   "exclude": ["node_modules", "dist"]
 }

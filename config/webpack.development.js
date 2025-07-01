@@ -10,6 +10,14 @@ const { join } = require("path");
 //   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
+  mode: "development",
+  devtool: "source-map",
+  devServer: {
+    hot: true,
+    open: true,
+    historyApiFallback: true,
+    port: 3000,
+  },
   module: {
     rules: [
       // 普通 CSS 文件（全局样式、第三方库等）
@@ -26,8 +34,11 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
+              importLoaders: 1,
               modules: {
-                localIdentName: "[name]__[local]___[hash:base64:5]",
+                localIdentName: "[local]--[hash:base64:5]",
+                auto: true,
+                exportLocalsConvention: "camelCase",
               },
             },
           },
@@ -36,11 +47,4 @@ module.exports = {
     ],
   },
   //   plugins: [new BundleAnalyzerPlugin()],
-  devServer: {
-    static: {
-      directory: join(__dirname, "public"),
-    },
-    compress: true,
-    port: 9000,
-  },
 };
