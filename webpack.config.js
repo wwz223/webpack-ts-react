@@ -20,15 +20,15 @@ const WebpackBaseConfig = {
     extensions: [".tsx", ".ts", ".js"],
     alias: {
       "@": resolve(__dirname, "src"),
-      "config": resolve(__dirname, "config")
+      config: resolve(__dirname, "config"),
     },
   },
   entry: {
     main: resolve("src/index.tsx"),
   },
   output: {
-    path: resolve(process.cwd(), "dist"),
-    filename: "index.js",
+    path: resolve("dist"),
+    filename: "[name].[contenthash:8].js",
     chunkFilename: "[name].[contenthash:8].js",
     publicPath: "/",
   },
@@ -42,21 +42,22 @@ const WebpackBaseConfig = {
           options: {
             presets: [
               "@babel/preset-env",
-              "@babel/preset-react",
-              "@babel/preset-typescript",
-            ],
-          },
-        },
+              ["@babel/preset-react", {
+                "runtime": "automatic"
+              }],
+              "@babel/preset-typescript"
+            ]
+          }
+        }
       },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: resolve("src/index.html"),
-      inject: true,
       hash: true,
     }),
+    new CleanWebpackPlugin(),
   ],
 };
 

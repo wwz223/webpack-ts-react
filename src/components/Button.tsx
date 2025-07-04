@@ -1,5 +1,4 @@
-import React from "react";
-import "./button.css";
+import "./button.module.css";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -7,5 +6,9 @@ interface ButtonProps {
 }
 
 export const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
-  return <div className="btn">{children}</div>;
+  return (
+    <div className="btn" onClick={onClick}>
+      {children}
+    </div>
+  );
 };

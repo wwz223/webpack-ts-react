@@ -1,5 +1,5 @@
-import React from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
+import { Button } from "@/components/Button";
 
 export default function Home() {
   const location = useLocation();
@@ -8,51 +8,48 @@ export default function Home() {
     return location.pathname === path;
   };
 
-  const navStyle = {
-    backgroundColor: '#ffffff',
-    padding: '1rem',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-    marginBottom: '2rem'
-  };
-
-  const linkStyle = {
-    textDecoration: 'none',
-    color: '#333',
-    padding: '0.5rem 1rem',
-    borderRadius: '4px',
-    transition: 'background-color 0.3s'
-  };
-
-  const activeLinkStyle = {
-    ...linkStyle,
-    backgroundColor: '#f0f0f0',
-    color: '#1a73e8'
-  };
-
-  const containerStyle = {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 1rem'
-  };
-
-  const contentStyle = {
-    backgroundColor: '#ffffff',
-    borderRadius: '8px',
-    padding: '2rem',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-  };
-
   return (
-    <div style={{ backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
-      <nav style={navStyle}>
-        <div style={containerStyle}>
-          <Link to="/" style={isActive('/') ? activeLinkStyle : linkStyle}>首页</Link>
-          <Link to="/dashboard" style={isActive('/dashboard') ? activeLinkStyle : linkStyle}>仪表盘</Link>
-          <Link to="/about" style={isActive('/about') ? activeLinkStyle : linkStyle}>关于我们</Link>
+    <div className="min-h-screen bg-gray-100">
+      <nav className="bg-white shadow-md mb-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex space-x-4 py-4">
+            <Link
+              to="/"
+              className={`px-4 py-2 rounded-md transition-colors duration-300 ${
+                isActive("/")
+                  ? "bg-gray-100 text-blue-600"
+                  : "text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              首页
+            </Link>
+            <Link
+              to="/dashboard"
+              className={`px-4 py-2 rounded-md transition-colors duration-300 ${
+                isActive("/dashboard")
+                  ? "bg-gray-100 text-blue-600"
+                  : "text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              仪表盘
+            </Link>
+            <Link
+              to="/about"
+              className={`px-4 py-2 rounded-md transition-colors duration-300 ${
+                isActive("/about")
+                  ? "bg-gray-100 text-blue-600"
+                  : "text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              关于我们
+            </Link>
+          </div>
         </div>
       </nav>
-      <main style={containerStyle}>
-        <div style={contentStyle}>
+      <main className="max-w-7xl mx-auto px-4">
+        <div className="bg-red-200 h-[100px]">123</div>
+        <Button>submit</Button>
+        <div className="bg-white rounded-lg p-8 shadow-md">
           <Outlet />
         </div>
       </main>

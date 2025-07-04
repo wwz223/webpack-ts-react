@@ -20,12 +20,12 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: "[local]--[hash:base64:5]",
                 auto: true,
-                exportLocalsConvention: "camelCase",
+                localIdentName: "[local]--[hash:base64:5]",
               },
             },
           },
+          "postcss-loader",
         ],
       },
     ],
